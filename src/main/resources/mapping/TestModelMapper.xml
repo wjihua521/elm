@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.popcorn.popcornservice.dao.mapper.TestMapper" >
+    <resultMap id="BaseResultMap" type="com.popcorn.popcornservice.dao.model.TestModel" >
+        <id column="ID" property="id" jdbcType="DECIMAL" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <result column="INSERT_DATE" property="insertDate" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        ID, NAME, INSERT_DATE
+    </sql>
+
+    <select id="getModelById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select
+        <include refid="Base_Column_List" />
+        from TEST_MODEL
+        where ID = #{id,jdbcType=DECIMAL}
+    </select>
+
+</mapper>
